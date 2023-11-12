@@ -32,7 +32,9 @@ sb/
 └── white.png
 ```
 
-You can download the default sprites based on [Peteres Cel](https://github.com/Pete-Lawrence/Peters-Noteskins) [here](/src/assets/sprites.rar)
+You can download the default sprites based on Peteres Cel [here](https://github.com/Tunnelbliick/notosu/raw/main/sb.rar)
+
+You can find Peteres ITG skins [here](https://github.com/Pete-Lawrence/Peters-Noteskins)
 
 ## Snaps
 
