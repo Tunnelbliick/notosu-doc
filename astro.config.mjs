@@ -22,7 +22,14 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Payfield',
+					label: 'Sprite Setup',
+					items: [
+						{ label: 'Folder Structure', link: '/sprites/sprites/' },
+						{ label: 'Non Arrow Skins', link: '/sprites/noarrow/' },
+					],
+				},		
+				{
+					label: 'Classes',
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Payfield', link: '/playfield/playfield/' },
@@ -37,8 +44,10 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'OriginToReceptor', link: '/render/origin2receptor/' },
-						{ label: 'ByAnchors', link: '/render/byanchors/' },
 						{ label: 'ByEquation', link: '/render/byequation/' },
+						{ label: 'Stutter', link: '/render/stutter/' },
+						{ label: 'ByAnchors', link: '/render/byanchors/' },
+						{ label: 'PathWay', link: '/render/pathway/' },
 					],
 				},
 				{
