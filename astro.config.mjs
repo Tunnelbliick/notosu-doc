@@ -22,17 +22,30 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Effects',
+					label: 'Payfield',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Available Effects', link: '/effects/effects/' },
+						{ label: 'Payfield', link: '/playfield/playfield/' },
+						{ label: 'Column', link: '/playfield/column/column' },
+						{ label: 'Receptor', link: '/playfield/receptor/receptor' },
+						{ label: 'Origin', link: '/playfield/origin/origin' },
+						{ label: 'Note', link: '/playfield/note/note' },
 					],
 				},
 				{
-					label: 'Render | Draw',
+					label: 'Render',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Available Renders', link: '/render/renders/' },
+						{ label: 'OriginToReceptor', link: '/render/origin2receptor/' },
+						{ label: 'ByAnchors', link: '/render/byanchors/' },
+						{ label: 'ByEquation', link: '/render/byequation/' },
+					],
+				},
+				{
+					label: 'Utility',
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{ label: 'Utility', link: '/utility/utility/' },
 					],
 				},
 			],

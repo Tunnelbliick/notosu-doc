@@ -1,45 +1,37 @@
 ---
 title: Storybrew Setup
-description: A guide on how to setup Storybrew
+description: Step-by-Step Guide on Setting Up Storybrew
 ---
 
-A short guide on how to setup Storybrew
-If you encounter any issues refer to the [Storybrew Wiki](https://github.com/Damnae/storybrew/wiki) or the Storyboarder Banquet [Discord](https://github.com/Tunnelbliick/notosu)
+This guide provides a straightforward process for setting up Storybrew, a powerful tool for osu! storyboarding. If you face any difficulties, consult the [Storybrew Wiki](https://github.com/Damnae/storybrew/wiki) or join the Storyboarder Banquet [Discord](https://discord.gg/storyboarders) for assistance.
 
-## Setting Storybrew up
+## Installing Storybrew
 
-1. Download the latest [version](https://github.com/Damnae/storybrew/releases/latest).
+1. **Download Storybrew**: Obtain the latest version of Storybrew from the [official releases page](https://github.com/Damnae/storybrew/releases/latest).
 
-2. Install [Visual Studio Code](https://code.visualstudio.com/). 
+2. **Install Visual Studio Code**: Download and install [Visual Studio Code](https://code.visualstudio.com/). Ensure the "Add to PATH" option is selected during installation for seamless integration with Storybrew. While other versions of Visual Studio or text editors can be used, Visual Studio Code offers optimal features like IntelliSense and better script editing support.
 
-    Make sure to either check the "Add to PATH" option, or to install it in its default location so storybrew can find it. 
-    
-    You can use other versions of Visual Studio, but they are much heavier to install. Any text editor can be used to edit scripts, but you'd be missing IntelliSense (word completion, parameter hints, etc.). Visual Studio Code is also better integrated for script creation/editing.
+3. **.NET Framework 4.5.2 Developer Pack**: Install the [.NET Framework 4.5.2 Developer Pack](https://www.microsoft.com/en-us/download/details.aspx?id=42637) to ensure compatibility with Storybrew.
 
-3. Install the [.NET Framework 4.5.2 Developer Pack](https://www.microsoft.com/en-us/download/details.aspx?id=42637).
+4. **Create a New Project**: Launch `Storybrew Editor.exe`, click on `New project`, and set up your project by naming it and selecting a mapset from any .osu file within it.
 
-4. Launch `Storybrew Editor.exe` and click on `New project`.
+5. **Effect Creation**: In Storybrew, storyboards are built from multiple effects. To create an effect, navigate to the Effects tab, click on New script, name your script, and click Ok. The script will open in Visual Studio Code for editing.
 
-5. Choose a name for the project and select the mapset by picking any .osu file inside it.
+6. **Visual Studio Code Setup**: Upon opening a script for the first time in Visual Studio Code, you'll be prompted to install the C# extension (use `ext install csharp` in the command palette if it doesn't prompt). Restart Visual Studio Code after installation to enable syntax coloring.
 
-6. Storyboards are made of multiple effects; to create a new effect, click on the Effects tab on the bottom right, then New script.
+7. **Writing Your First Script**: Here's a basic script to start with. Copy it into the `Generate` method of your script. Make sure the image path is correctly referenced.
+   ```csharp
+   var layer = GetLayer("Main");
+   var bg = layer.CreateSprite("bg.jpg", OsbOrigin.Centre);
+   bg.Scale(0, 480.0 / 768);
+   bg.Fade(0, 2000, 0, 1);
+   bg.Fade(8000, 10000, 1, 0);
+   ```
 
-7. Pick a name for the script, then click Ok. The script will open in Visual Studio Code where you can edit it.
+8. **Previewing Your Work**: Save the script to see the effects in the editor. Use the mouse wheel or arrow keys to navigate through time and observe the background image fading in and out. Press space to play the song.
 
-8. The first time you open a script in Visual Studio Code, it will ask you to install the C# extension (If it doesn't, press Ctrl-P and type `ext install csharp`). After restarting, your code should be syntax colored (= not completely white).
+9. **Exporting to osu!**: Once you're satisfied with your storyboard, click the puzzle piece icon in the bottom right of the editor to generate the .osb file.
 
-9. Here's a sample script, copy it inside the `Generate` method (make sure the path to the background image is correct).
+10. **Storyboard in osu!**: Place the .osb file in your osu! mapset folder. Your storyboard is now ready to be viewed within the game.
 
-```csharp
-var layer = GetLayer("Main");
-var bg = layer.CreateSprite("bg.jpg", OsbOrigin.Centre);
-bg.Scale(0, 480.0 / 768);
-bg.Fade(0, 2000, 0, 1);
-bg.Fade(8000, 10000, 1, 0);
-```
-
-10. The result will be visible in the editor as soon as you save the script. You can use the mouse wheel or arrow keys to move in time and see the background fading in and out. You can also press space to play the song.
-
-11. Click the puzzle piece in the bottom right to write the .osb file.
-
-12. Your storyboard is now working in osu!
+By following these steps, you can successfully set up and begin creating storyboards with Storybrew. For more advanced techniques and troubleshooting, refer to the resources provided.
