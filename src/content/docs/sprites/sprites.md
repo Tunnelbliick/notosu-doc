@@ -27,7 +27,6 @@ sb/
 │   ├── hold.png
 │   ├── hold_body.png
 │   ├── receiver.png
-│   ├── receiver2.png
 │   └── wayof.png
 └── white.png
 ```
