@@ -37,7 +37,7 @@ You can find Peteres ITG skins [here](https://github.com/Pete-Lawrence/Peters-No
 
 ## Snaps
 
-notOSU! currently support following beatsnapes `1``2``3``4``12``16` and any multiples which will reuse the same asset like `6``9` or `24``36` as example.
+notOSU! currently support following beatsnapes `1` `2` `3` `4` `12` `16` and any multiples which will reuse the same asset like `6` `9` or `24` `36` as example.
 
 Here's what each folder is for:
 
