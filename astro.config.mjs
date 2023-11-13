@@ -14,7 +14,7 @@ export default defineConfig({
 				{
 					label: 'Initial Setup',
 					items: [
-						{ label: 'Getting Started', link: '/start/' },
+						{ label: 'Getting Started', link: '/start/start' },
 						{ label: 'Storybew Setup', link: '/start/storybrew/' },
 						{ label: 'Storyboarding 101', link: '/start/storyboarding/' },
 						{ label: 'notOSU! Setup', link: '/start/notosu/' },
@@ -24,7 +24,7 @@ export default defineConfig({
 				{
 					label: 'Sprite Setup',
 					items: [
-						{ label: 'Folder Structure', link: '/sprites/' },
+						{ label: 'Folder Structure', link: '/sprites/sprites' },
 						{ label: 'Non Arrow Skins', link: '/sprites/nonarrow/' },
 					],
 				},		
@@ -32,7 +32,7 @@ export default defineConfig({
 					label: 'Classes',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Payfield', link: '/playfield/' },
+						{ label: 'Payfield', link: '/playfield/playfield' },
 						{ label: 'Column', link: '/playfield/column/column' },
 						{ label: 'Receptor', link: '/playfield/receptor/receptor' },
 						{ label: 'Origin', link: '/playfield/origin/origin' },
@@ -54,7 +54,7 @@ export default defineConfig({
 					label: 'Utility',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Utility', link: '/utility/' },
+						{ label: 'Utility', link: '/utility/utility' },
 					],
 				},
 			],
