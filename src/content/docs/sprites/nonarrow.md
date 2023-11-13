@@ -1,6 +1,6 @@
 ---
 title: Changing to a non arrow skin
-description: Steps required to modify notOsu! to a non arrow skin.
+description: Steps required to modify notOsu! for a non arrow skin.
 ---
 
 # Implementing Non-Arrow Skins in notOSU!
