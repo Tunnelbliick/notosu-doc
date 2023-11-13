@@ -88,4 +88,4 @@ In the future this step will probably be replaced by a flag, but i suggest on st
 
 Once you have updated your storyboard script, remember to test the storyboard to ensure that the skins appear as intended and that gameplay is not adversely affected.
 
-For further guidance on sprite setup and storyboard customization, please revisit the [Sprite Setup Guide](/sprites/sprites). If you encounter any issues or need additional help, the notOSU! community is a valuable resource for support and advice.
+For further guidance on sprite setup and storyboard customization, please revisit the [Sprite Setup Guide](/sprites). If you encounter any issues or need additional help, the notOSU! community is a valuable resource for support and advice.
