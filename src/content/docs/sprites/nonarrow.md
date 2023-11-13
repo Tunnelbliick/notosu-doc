@@ -35,21 +35,21 @@ Here's what your `Render` method in the `Note` class might look like after remov
 
 Remove this code from the functions, since it will not be needed for non arrow skins.
 ```csharp
-            switch (type)
-            {
-                case ColumnType.one:
-                    sprite.Rotate(starttime - 1, 1 * Math.PI / 2);
-                    break;
-                case ColumnType.two:
-                    sprite.Rotate(starttime - 1, 0 * Math.PI / 2);
-                    break;
-                case ColumnType.three:
-                    sprite.Rotate(starttime - 1, 2 * Math.PI / 2);
-                    break;
-                case ColumnType.four:
-                    sprite.Rotate(starttime - 1, 3 * Math.PI / 2);
-                    break;
-            }
+switch (type)
+    {
+        case ColumnType.one:
+        sprite.Rotate(starttime - 1, 1 * Math.PI / 2);
+            break;
+        case ColumnType.two:
+        sprite.Rotate(starttime - 1, 0 * Math.PI / 2);
+            break;
+        case ColumnType.three:
+        sprite.Rotate(starttime - 1, 2 * Math.PI / 2);
+            break;
+        case ColumnType.four:
+        sprite.Rotate(starttime - 1, 3 * Math.PI / 2);
+            break;
+}
 ```
 
 ```csharp
@@ -81,6 +81,8 @@ public Receptor(String receptorSpritePath, double rotation, StoryboardLayer laye
 ```
 
 After making these changes, your storyboard will use the new non-arrow skins without unnecessary rotations, ensuring that your custom skins display correctly during gameplay.
+
+In the future this step will probably be replaced by a flag, but i suggest on sticking to Arrows for more complex modcharts.
 
 ## Final Steps
 

@@ -25,7 +25,7 @@ export default defineConfig({
 					label: 'Sprite Setup',
 					items: [
 						{ label: 'Folder Structure', link: '/sprites/sprites/' },
-						{ label: 'Non Arrow Skins', link: '/sprites/noarrow/' },
+						{ label: 'Non Arrow Skins', link: '/sprites/nonarrow/' },
 					],
 				},		
 				{
