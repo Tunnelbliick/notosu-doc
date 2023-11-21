@@ -9,7 +9,7 @@ Storyboarding in osu!, using the OSB (Osu! StoryBoarding) format, is both a crea
 
 1. **One Command at a Time**: In traditional OSB scripting, a sprite can only process one move command at a time. This means you cannot simultaneously execute multiple move commands for a single sprite. Each command must complete before the next one begins, requiring careful planning and sequencing.
 
-2. **Limited Capabilities**: OSB was designed in osu!'s early days, so it lacks advanced features found in modern animation software. It supports basic transformations like move, scale, rotate, and fade but doesn't handle more complex interactions natively.
+2. **Early Days, Simple Tools**: When osu! was just starting out, OSB was made with a simple idea in mind. It was all about having storyboards on the top screen and a combo of a background, 3D models, and the game area on the bottom. So, OSB's kind of basic – it can handle stuff like moving, scaling, rotating, and fading, but it's not really cut out for the more complex tricks you see in newer animation software.
 
 3. **Performance Considerations**: OSB is not optimized for handling a large number of sprites or complex animations. Excessive use of sprites or intricate animations can lead to performance issues, especially on lower-end systems.
 

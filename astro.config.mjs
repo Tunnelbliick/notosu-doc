@@ -8,7 +8,7 @@ export default defineConfig({
 			title: 'notOSU! Doc',
 			social: {
 				github: 'https://github.com/Tunnelbliick/notosu',
-				discord: 'https://discord.gg/GBY9BWsr5k'
+				discord: 'https://discord.notosu.sh'
 			},
 			sidebar: [
 				{
@@ -32,7 +32,7 @@ export default defineConfig({
 					label: 'Classes',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Payfield', link: '/playfield/playfield' },
+						{ label: 'Playfield', link: '/playfield/playfield' },
 						{ label: 'Column', link: '/playfield/column/column' },
 						{ label: 'Receptor', link: '/playfield/receptor/receptor' },
 						{ label: 'Origin', link: '/playfield/origin/origin' },
