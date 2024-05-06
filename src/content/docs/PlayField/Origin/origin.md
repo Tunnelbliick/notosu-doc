@@ -3,94 +3,94 @@ title: NoteOrigin
 description: Properties, Methods, and Functions for Note Origin Objects in a Playfield
 ---
 
-The `NoteOrigin` class in a playfield is responsible for managing the origin points from where the notes appear. It handles the positioning, scaling, and rotation of these points, offering functionalities to move and animate them in sync with the game.
+The `NoteOrigin` class manages the origin point for notes within a storyboard. It controls the positioning, scaling, and rotation of these origins, supporting animations and transitions that sync with gameplay.
 
 ## Properties
 
-- `receptorSpritePath`: `string` - Path to the sprite used for the note origin.
+- `receptorSpritePath`: `string` - Path to the sprite image used for the note origin.
 - `layer`: `StoryboardLayer` - The storyboard layer where the note origin is rendered.
-- `originSprite`: `OsbSprite` - The actual sprite object of the note origin.
-- `positionX`, `positionY`: `SortedDictionary<double, float>` - Tracks the X and Y positions over time.
-- `bpmOffset`, `bpm`: `double` - BPM and offset for timing the appearance of notes.
-- `debug`: `OsbSprite` - A debug sprite, used for development and testing.
-- `rotation`: `double` - Rotation of the note origin in radians.
-- `deltaIncrement`: `double` - Increment value used for easing calculations.
+- `originSprite`: `OsbSprite` - The sprite object representing the note origin.
+- `positionX`, `positionY`: `SortedDictionary<double, float>` - Dictionaries tracking the X and Y positions of the origin over time.
+- `bpmOffset`, `bpm`: `double` - BPM and its offset for precise timing.
+- `debug`: `OsbSprite` - A sprite used for debugging and testing purposes.
+- `rotation`: `double` - Current rotation of the note origin in radians.
+- `deltaIncrement`: `double` - Incremental value used for detailed easing calculations.
 
-## Constructor
+## Initialization
 
-### NoteOrigin
-Initializes a note origin with specified properties, setting up its sprite and animations.
+Initializes a new instance of the `NoteOrigin` with specified properties and setups up initial animations.
 
 ```csharp
-public NoteOrigin(String receptorSpritePath, double rotation, StoryboardLayer layer, CommandScale scale, double starttime, double delta);
+public NoteOrigin(string receptorSpritePath, double rotation, StoryboardLayer layer, CommandScale scale, double starttime, double delta);
 ```
 
 **Parameters:**
-- `receptorSpritePath` (`String`): Path to the sprite used for the note origin.
-- `rotation` (`double`): Initial rotation of the note origin in radians.
-- `layer` (`StoryboardLayer`): The layer on which the note origin is rendered.
-- `scale` (`CommandScale`): Scale of the note origin sprite.
-- `starttime` (`double`): The start time for initializing animations.
-- `delta` (`double`): Increment value for easing and other animation calculations.
+- `receptorSpritePath` (`string`): Path to the sprite image.
+- `rotation` (`double`): Initial rotation in radians.
+- `layer` (`StoryboardLayer`): The storyboard layer for rendering.
+- `scale` (`CommandScale`): Scaling factor for the sprite.
+- `starttime` (`double`): Start time for initial animations.
+- `delta` (`double`): Delta increment for easing calculations.
 
 ## Methods
 
 ### Render
-Handles the rendering of the note origin sprite over a specified duration.
+Manages the rendering of the note origin on the storyboard.
 
 ```csharp
 public void Render(double starttime, double endTime);
 ```
 
 **Parameters:**
-- `starttime` (`double`): The start time for the rendering.
-- `endTime` (`double`): The end time for the rendering.
-
----
+- `starttime` (`double`): Start time for rendering.
+- `endTime` (`double`): End time for rendering.
 
 ### Movement Methods
-Includes methods for moving the note origin absolutely or relatively within the playfield.
+Methods for moving the note origin both absolutely and relatively within the storyboard.
 
 ```csharp
 public void MoveOriginAbsolute(double starttime, Vector2 endPos);
 public void MoveOriginAbsolute(OsbEasing ease, double starttime, double endtime, Vector2 startPos, Vector2 endPos);
+public void MoveOriginRelative(OsbEasing ease, double starttime, double endtime, Vector2 offset);
+public void MoveOriginRelativeX(OsbEasing ease, double starttime, double endtime, float value);
+public void MoveOriginRelativeY(OsbEasing ease, double starttime, double endtime, float value);
 ```
 
 **Parameters:**
 - `starttime`, `endtime` (`double`): Start and end times for the movement.
-- `ease` (`OsbEasing`): The easing function for the movement transition.
-- `startPos`, `endPos` (`Vector2`): Starting and ending positions for the absolute movement.
-
----
+- `ease` (`OsbEasing`): Easing function for the transition.
+- `startPos`, `endPos`, `offset` (`Vector2`): Starting, ending, and offset positions for the movement.
+- `value` (`float`): Value for relative movement in X or Y direction.
 
 ### Scale and Rotate
-Methods for adjusting the scale and rotation of the note origin.
+Adjusts the scale and rotation of the note origin to enhance visual effects.
 
 ```csharp
 public void ScaleReceptor(OsbEasing ease, double starttime, double endtime, Vector2 newScale);
 public void RotateReceptor(OsbEasing ease, double starttime, double endtime, double rotation);
+public void PivotOrigin(OsbEasing ease, double starttime, double endtime, double rotation, Vector2 center);
 ```
 
 **Parameters:**
-- `ease` (`OsbEasing`): The easing function for scaling or rotation transitions.
-- `starttime`, `endtime` (`double`): Start and end times for the scaling or rotation effect.
-- `newScale` (`Vector2`): New scale vector for the note origin.
-- `rotation` (`double`): The angle of rotation in radians.
-
----
+- `ease` (`OsbEasing`): Easing function for the transition.
+- `starttime`, `endtime` (`double`): Start and end times for the effect.
+- `newScale` (`Vector2`): New scale vector.
+- `rotation` (`double`): Rotation angle in radians.
+- `center` (`Vector2`): Center point for rotation.
 
 ### Utility Methods
-Include additional methods for handling specific properties like position, scale, and rotation at different times.
+These methods provide real-time information about the position, scale, and rotation of the note origin.
 
 ```csharp
 public Vector2 PositionAt(double time);
-public float RotationAt(double time);
 public Vector2 ScaleAt(double time);
+public float RotationAt(double time);
 ```
 
-**Utility Method Descriptions:**
-- `PositionAt`: Retrieves the current position of the note origin at a specified time.
-- `RotationAt`: Provides the rotation angle of the note origin at a given time.
-- `ScaleAt`: Returns the scale of the note origin at a specific time.
+**Parameters:**
+- `time` (`double`): The specific time to retrieve the property.
+
+**Returns:**
+- Position, scale, or rotation at the specified time.
 
 These utility methods are vital for managing the dynamic movement and appearance of note origins, ensuring they align with the game's rhythm and enhance player interaction.

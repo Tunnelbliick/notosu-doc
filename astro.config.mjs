@@ -15,7 +15,7 @@ export default defineConfig({
 					label: 'Initial Setup',
 					items: [
 						{ label: 'Getting Started', link: '/start/start' },
-						{ label: 'Storybew Setup', link: '/start/storybrew/' },
+						{ label: 'Storybrew Setup', link: '/start/storybrew/' },
 						{ label: 'Storyboarding 101', link: '/start/storyboarding/' },
 						{ label: 'notOSU! Setup', link: '/start/notosu/' },
 						{ label: 'My First Effect', link: '/start/firsteffect/' },

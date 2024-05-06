@@ -3,6 +3,8 @@ title: OriginToReceptor
 description: Renders notes from note origin to receptor in a straight line
 ---
 
+# DEPRECATED!
+
 The `OriginToReceptor` renderer is designed to create a dynamic visualization of notes moving from their origin point to the receptor. This rendering style is common in rhythm games, where notes travel along a path to a fixed target that the player interacts with.
 
 ### Functionality of the Renderer:

@@ -29,6 +29,10 @@ Within your storyboard script, locate the `Note` class. In the `Render` method, 
 
 Similarly, in the `Receptor` class constructors, you'll also find `receptorSprite.Rotate` methods within a `switch` statement. These lines are responsible for rotating the receptor sprites and should be removed or commented out for non-arrow skins.
 
+### Hitlighting
+
+Default notosu uses hit.png and light.png which is also rotate like the receptor to display accurate hitlighting. You will need to bring your own hitlighting textures if you want to adjust this.
+
 ## Example of Adjusted Note Render Method
 
 Here's what your `Render` method in the `Note` class might look like after removing the rotation:

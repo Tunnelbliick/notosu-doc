@@ -20,14 +20,11 @@ sb/
 │   ├── ...
 │   ├── 12.png
 │   ├── arrow.png
-│   ├── decent.png
-│   ├── excellent.png
-│   ├── fantastic.png
-│   ├── great.png
+│   ├── hit.png
+│   ├── light.png
 │   ├── hold.png
 │   ├── hold_body.png
 │   ├── receiver.png
-│   └── wayof.png
 └── white.png
 ```
 

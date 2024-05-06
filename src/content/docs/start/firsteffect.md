@@ -15,41 +15,34 @@ Our goal is to create an effect where the playfield rotates slightly and then mo
 ## Step-by-Step Guide
 
 ### 1. Define the Timing
-Identify the part of the song where you want to apply the effect. For this example, let's say the effect starts at `50000ms` and ends at `52000ms`.
+Identify the part of the song where you want to apply the effect. For this example, let's say the effect starts at `70010ms` and ends at `71510ms`.
 
 ### 2. Rotate the Playfield
 We'll start by rotating the playfield slightly. This creates a sense of motion and prepares the player for the upcoming movement.
 
 ```csharp
-double startTime = 50000;
-double endTime = 52000;
-double rotationAngle = Math.PI / 30; // Small rotation angle
-
-playfield.Rotate(OsbEasing.OutQuad, startTime, startTime + 1000, rotationAngle);
+field.Rotate(OsbEasing.None, 70010, 70010 + 1500, Math.PI * 2, CenterType.middle);
 ```
 
-### 3. Move the Playfield
-Next, we'll make the playfield move up and down to the beat. This movement will be synchronized with the music to enhance the player's immersion.
+### 3. Resize the Playfield
+Next, we'll resize the playfield to add a little more spice to the rotation of the playfield.
 
+Example Rotation First:
 ```csharp
-double beatDuration = 60000 / BPM; // Replace BPM with the song's BPM
-Vector2 moveUp = new Vector2(0, -10); // Move up by 10 units
-Vector2 moveDown = new Vector2(0, 10); // Move down by 10 units
-
-// Move up on the first beat
-playfield.moveField(OsbEasing.OutQuad, startTime + 1000, startTime + 1000 + beatDuration / 2, moveUp.X, moveUp.Y);
-
-// Move down on the second beat
-playfield.moveField(OsbEasing.OutQuad, startTime + 1000 + beatDuration / 2, startTime + 2000, moveDown.X, moveDown.Y);
+field.Rotate(OsbEasing.None, 70010, 70010 + 1500, Math.PI * 2, CenterType.middle);
+field.Resize(OsbEasing.InSine, 70010, 70010 + 1500 / 2, 750, height);
+field.Resize(OsbEasing.OutSine, 70010 + 1500 / 2, 70010 + 1500, 250, height);
 ```
+![StorybrewEditor_EVVgW47pTB](https://github.com/Tunnelbliick/notosu/assets/38663241/398e0152-1f19-4e5a-99c3-0807d98b2293)
 
-### 4. Return to Original Position
-After the effect, it's essential to bring the playfield back to its original position and rotation for a seamless experience.
 
+Example Resize First:
 ```csharp
-playfield.Rotate(OsbEasing.InQuad, endTime - 1000, endTime, -rotationAngle);
-playfield.moveField(OsbEasing.InQuad, endTime - 1000, endTime, 0, 0);
+field.Resize(OsbEasing.InSine, 70010, 70010 + 1500 / 2, 750, height);
+field.Resize(OsbEasing.OutSine, 70010 + 1500 / 2, 70010 + 1500, 250, height);
+field.Rotate(OsbEasing.None, 70010, 70010 + 1500, Math.PI * 2, CenterType.middle);
 ```
+![StorybrewEditor_cDfVcHT4Dt](https://github.com/Tunnelbliick/notosu/assets/38663241/7bc07da4-411e-4ae5-9d9a-883069aff140)
 
 ### 5. Test Your Effect
 Run your storyboard script and observe the effect in sync with the music. Adjust timings and values as needed to fine-tune the experience.

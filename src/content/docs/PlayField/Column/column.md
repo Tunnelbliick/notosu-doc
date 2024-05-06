@@ -47,75 +47,112 @@ public void setBPM(double bpm, double bpmOffset);
 
 ---
 
+Here is the documentation for each of the new functions you've provided, following the style of the ASTRO documentation you showed:
+
+---
+
 ### MoveColumn
-Moves the entire column from one position to another over a given time range.
+Coordinates the simultaneous absolute movement of the receptor and the origin.
 
 ```csharp
 public void MoveColumn(OsbEasing easing, double starttime, double endtime, Vector2 from, Vector2 to);
 ```
 
 **Parameters:**
-- `easing` (`OsbEasing`): The easing function for the movement transition.
-- `starttime` (`double`): The start time for the movement.
-- `endtime` (`double`): The end time for the movement.
-- `from` (`Vector2`): The starting position.
-- `to` (`Vector2`): The ending position.
+- `easing` (`OsbEasing`): The easing function applied to the movement.
+- `starttime` (`double`): The time at which the movement starts.
+- `endtime` (`double`): The time at which the movement ends.
+- `from` (`Vector2`): The starting position of the movement.
+- `to` (`Vector2`): The ending position of the movement.
 
 ---
 
-### MoveColumnRelative, MoveColumnRelativeX, MoveColumnRelativeY
-Moves the column relative to its current position, with variants for specific axis movement.
+### MoveColumnRelative
+Coordinates the simultaneous relative movement of the receptor and the origin by a specified offset.
 
 ```csharp
 public void MoveColumnRelative(OsbEasing easing, double starttime, double endtime, Vector2 offset);
 ```
 
 **Parameters:**
-- `easing` (`OsbEasing`): The easing function for the movement.
-- `starttime` (`double`): The start time for the movement.
-- `endtime` (`double`): The end time for the movement.
-- `offset` (`Vector2`): The amount and direction of the movement.
+- `easing` (`OsbEasing`): The easing function applied to the movement.
+- `starttime` (`double`): The time at which the movement starts.
+- `endtime` (`double`): The time at which the movement ends.
+- `offset` (`Vector2`): The offset by which the column is moved.
 
 ---
 
-### RotateReceptor, RotateReceptorRelative
-Rotates the receptor either to an absolute angle or relative to its current orientation.
+### MoveColumnRelativeX
+Coordinates the simultaneous relative horizontal movement (X-axis) of the receptor and the origin.
+
+```csharp
+public void MoveColumnRelativeX(OsbEasing easing, double starttime, double endtime, float value);
+```
+
+**Parameters:**
+- `easing` (`OsbEasing`): The easing function applied to the movement.
+- `starttime` (`double`): The time at which the movement starts.
+- `endtime` (`double`): The time at which the movement ends.
+- `value` (`float`): The value by which the X-axis position is changed.
+
+---
+
+### MoveColumnRelativeY
+Coordinates the simultaneous relative vertical movement (Y-axis) of the receptor and the origin.
+
+```csharp
+public void MoveColumnRelativeY(OsbEasing easing, double starttime, double endtime, float value);
+```
+
+**Parameters:**
+- `easing` (`OsbEasing`): The easing function applied to the movement.
+- `starttime` (`double`): The time at which the movement starts.
+- `endtime` (`double`): The time at which the movement ends.
+- `value` (`float`): The value by which the Y-axis position is changed.
+
+---
+
+### MoveReceptorAbsolute
+Manages the absolute positioning of the receptor.
+
+```csharp
+public void MoveReceptorAbsolute(double starttime, Vector2 newReceptorPosition);
+```
+
+**Parameters:**
+- `starttime` (`double`): The time at which the positioning starts.
+- `newReceptorPosition` (`Vector2`): The new position for the receptor.
+
+---
+
+### MoveReceptorAbsolute (Overload)
+Manages the movement of the receptor from a starting position to an ending position over a specified time period.
+
+```csharp
+public void MoveReceptorAbsolute(OsbEasing ease, double starttime, double endtime, Vector2 startPos, Vector2 endPos);
+```
+
+**Parameters:**
+- `ease` (`OsbEasing`): The easing function applied to the movement.
+- `starttime` (`double`): The time at which the movement starts.
+- `endtime` (`double`): The time at which the movement ends.
+- `startPos` (`Vector2`): The starting position of the receptor.
+- `endPos` (`Vector2`): The ending position of the receptor.
+
+---
+
+### RotateReceptorRelative
+Manages the relative rotation of the receptor over a specified time period.
 
 ```csharp
 public void RotateReceptorRelative(OsbEasing easing, double starttime, double endtime, double rotation);
-public void RotateReceptor(OsbEasing easing, double starttime, double endtime, double rotation);
 ```
 
 **Parameters:**
-- `easing` (`OsbEasing`): The easing function for the rotation.
-- `starttime` (`double`): The start time for the rotation.
-- `endtime` (`double`): The end time for the rotation.
-- `rotation` (`double`): The angle of rotation (in radians).
-
----
-
-### MoveOrigin, MoveOriginAbsolute, MoveOriginRelative
-Manages the movement of the origin point of the column.
-
-```csharp
-public void MoveOriginAbsolute(double starttime, Vector2 newOriginPosition);
-```
-
-**Parameters:**
-- `starttime` (`double`): The time at which the movement starts.
-- `newOriginPosition` (`Vector2`): The new position for the origin.
-
----
-
-### Position, Rotation, and Scale at Time Methods
-Retrieves the position, rotation, or scale of the origin or receptor at a specific time.
-
-```csharp
-public Vector2 OriginPositionAt(double starttime);
-```
-
-**Parameters:**
-- `starttime` (`double`): The time at which to get the position, rotation, or scale.
+- `easing` (`OsbEasing`): The easing function applied to the rotation.
+- `starttime` (`double`): The time at which the rotation starts.
+- `endtime` (`double`): The time at which the rotation ends.
+- `rotation` (`double`): The degree of rotation to be applied.
 
 ---
 
@@ -124,8 +161,9 @@ These methods and properties provide comprehensive control over individual colum
 ### Position, Rotation, and Scale at Time Methods (Continued)
 
 **Additional Methods:**
-- `OriginRotationAt(double starttime)`: Gets the rotation of the origin at a specific time.
-- `OriginScaleAt(double starttime)`: Gets the scale of the origin at a specific time.
+- `OriginPositionAt(double starttime)`: Retrieves the position of the origin at a specific time.
+- `OriginRotationAt(double starttime)`: Retrieves the rotation of the origin at a specific time.
+- `OriginScaleAt(double starttime)`: Retrieves the scale of the origin at a specific time.
 - `ReceptorPositionAt(double starttime)`: Retrieves the position of the receptor at a given time.
 - `ReceptorRotationAt(double starttime)`: Retrieves the rotation of the receptor at a specified time.
 - `ReceptorScaleAt(double starttime)`: Retrieves the scale of the receptor at a given time.
@@ -133,11 +171,5 @@ These methods and properties provide comprehensive control over individual colum
 These methods are crucial for synchronizing the visual elements of each column with the rhythm and timing of the music, ensuring a cohesive and engaging gameplay experience.
 
 ---
-
-### Utility and Additional Methods
-
-**MoveOrigin and Similar Methods:**
-- `MoveOriginAbsolute(OsbEasing ease, double starttime, double endtime, Vector2 startPos, Vector2 endPos)`: Moves the origin of the column to a new position over time with easing.
-- `MoveOriginRelative(OsbEasing ease, double starttime, double endtime, Vector2 offset)`: Moves the origin of the column relative to its current position.
 
 These methods allow for precise control over the positioning of note origins within each column, adding to the dynamic visual appeal of the game.

@@ -3,158 +3,101 @@ title: Receptor
 description: Properties, Methods, and Functions for Receptor Objects in a Rhythm Game Playfield
 ---
 
-The `Receptor` class in a rhythm game represents individual receptors within the playfield. It handles their positioning, animations, and interactions, offering functionalities for moving, scaling, and rotating these elements in response to the gameplay.
+The `Receptor` class represents the visual receptor element in a storyboard for osu!mania, which interacts with notes during gameplay. It manages the receptor's animation, positioning, and effects based on user interactions and game mechanics.
 
-## Properties
 
+**Properties:**
 - `receptorSpritePath`: `string` - Path to the sprite used for the receptor.
-- `position`: `Vector2` - The position of the receptor on the playfield.
+- `position`: `Vector2` - The initial position of the receptor.
 - `layer`: `StoryboardLayer` - The storyboard layer where the receptor is rendered.
 - `renderedSprite`: `OsbSprite` - The actual sprite object of the receptor.
-- `debug`: `OsbSprite` - A debug sprite for development purposes.
-- `appliedTransformation`: `string` - Keeps track of any transformations applied to the receptor.
-- `positionX`, `positionY`: `SortedDictionary<double, float>` - Tracks the X and Y positions over time.
-- `rotation`: `double` - The rotation of the receptor in radians.
-- `startRotation`: `double` - The initial rotation of the receptor.
-- `columnType`: `ColumnType` - The type of column this receptor belongs to.
-- `bpmOffset`, `bpm`: `double` - BPM and offset for timing receptor animations.
-- `deltaIncrement`: `double` - Increment value for easing calculations.
+- `debug`: `OsbSprite` - A sprite used for debugging purposes.
+- `appliedTransformation`: `string` - Tracks any transformations applied to the receptor for special effects.
+- `positionX`, `positionY`: `SortedDictionary<double, float>` - Dictionaries tracking the X and Y positions of the receptor over time.
+- `light`, `hit`: `OsbSprite` - Additional sprites used for effects like lighting and hit animations.
+- `rotation`: `double` - Current rotation of the receptor in radians.
+- `columnType`: `ColumnType` - Type of column based on the game layout, affecting positioning and rotation.
+- `bpmOffset`, `bpm`: `double` - BPM and its offset for precise timing animations.
+- `deltaIncrement`: `double` - Increment value used for detailed animation calculations.
 
-## Constructors
-
+**Constructors:**
 ### Receptor
-Initializes a receptor with specific properties and sets up its sprite and animations.
+Initializes a new instance of the `Receptor` with specified properties, setting up its sprite and initial animations based on the column type and game settings.
 
 ```csharp
-public Receptor(String receptorSpritePath, double rotation, StoryboardLayer layer, CommandScale scale, double starttime, ColumnType type, double delta);
-```
-
-**Parameters:**
-- `receptorSpritePath` (`String`): Path to the receptor sprite.
-- `rotation` (`double`): Initial rotation of the receptor in radians.
-- `layer` (`StoryboardLayer`): The layer on which the receptor is rendered.
-- `scale` (`CommandScale`): The scale applied to the receptor sprite.
-- `starttime` (`double`): The start time for initializing the receptor animations.
-- `type` (`ColumnType`): The type of column this receptor is part of.
-- `delta` (`double`): Increment value for easing and other animations.
-
----
-
-### Receptor (Overloaded Constructor)
-Another version of the constructor allowing different initialization parameters.
-
-```csharp
+public Receptor(string receptorSpritePath, double rotation, StoryboardLayer layer, CommandScale scale, double starttime, ColumnType type, double delta);
 public Receptor(string receptorSpritePath, double rotation, StoryboardLayer layer, Vector2 position, ColumnType type, double delta);
 ```
 
 **Parameters:**
-- `receptorSpritePath` (`string`): Path to the receptor sprite.
-- `rotation` (`double`): Initial rotation of the receptor in radians.
+- `receptorSpritePath` (`string`): Path to the sprite image.
+- `rotation` (`double`): Initial rotation in radians.
 - `layer` (`StoryboardLayer`): The layer on which the receptor is rendered.
-- `position` (`Vector2`): The initial position of the receptor.
-- `type` (`ColumnType`): The type of column this receptor is part of.
-- `delta` (`double`): Increment value for easing and other animations.
+- `scale` (`CommandScale`), `position` (`Vector2`): Scale or position settings for the receptor.
+- `starttime` (`double`): Start time for initial animations.
+- `type` (`ColumnType`): Column type, affecting rotation and positioning.
+- `delta` (`double`): Delta increment for animation calculations.
 
 ## Methods
 
-### MoveReceptorAbsolute
-Moves the receptor to an absolute position.
-
-```csharp
-public void MoveReceptorAbsolute(double starttime, Vector2 endPos);
-```
-
-**Parameters:**
-- `starttime` (`double`): The start time for the movement.
-- `endPos` (`Vector2`): The end position for the receptor.
-
----
-
-### MoveReceptorAbsolute (Overloaded)
-Moves the receptor from one position to another over a time range with easing.
-
-```csharp
-public void MoveReceptorAbsolute(OsbEasing ease, double starttime, double endtime, Vector2 startPos, Vector2 endPos);
-```
-
-**Parameters:**
-- `ease` (`OsbEasing`): The easing function for the movement transition.
-- `starttime` (`double`): The start time for the movement.
-- `endtime` (`double`): The end time for the movement.
-- `startPos` (`Vector2`): The starting position.
-- `endPos` (`Vector2`): The ending position.
-
----
-
-### MoveReceptorRelative
-Moves the receptor relative to its current position.
-
-```csharp
-public void MoveReceptorRelative(OsbEasing ease, double starttime, double endtime, Vector2 offset);
-```
-
-**Parameters:**
-- `ease` (`OsbEasing`): The easing function for the movement.
-- `starttime` (`double`): The start time for the movement.
-- `endtime` (`double`): The end time for the movement.
-- `offset` (`Vector2`): The offset for the movement.
-
----
-
-### RotateReceptor, PivotReceptor
-Rotates the receptor either absolutely or around a pivot point.
-
-```csharp
-public void RotateReceptorAbsolute(OsbEasing ease, double starttime, double endtime, double rotation);
-public void PivotReceptor(OsbEasing ease, double starttime, double endtime, double rotation, Vector2 center);
-```
-
-**Parameters for `RotateReceptorAbsolute`:**
-- `ease` (`OsbEasing`): The easing function for the rotation transition.
-- `starttime` (`double`): The start time for the rotation.
-- `endtime` (`double`): The end time for the rotation.
-- `rotation` (`double`): The angle of rotation in radians.
-
-**Parameters for `PivotReceptor`:**
-- `ease` (`OsbEasing`): The easing function for the rotation.
-- `starttime` (`double`): The start time for the rotation effect.
-- `endtime` (`double`): The end time for the rotation effect.
-- `rotation` (`double`): The angle of rotation in radians.
-- `center` (`Vector2`): The center point around which the receptor rotates.
-
----
-
-### Render, RenderTransformed
-Manages the rendering of the receptor sprite with or without transformations.
+### Render
+Handles the rendering of the receptor on the storyboard, including color transitions based on beat timings.
 
 ```csharp
 public void Render(double starttime, double endtime);
-public void RenderTransformed(double starttime, double endtime, string reference);
 ```
 
-**Parameters for `Render`:**
-- `starttime` (`double`): The start time for the rendering.
-- `endtime` (`double`): The end time for the rendering.
+**Parameters:**
+- `starttime` (`double`): Start time for rendering.
+- `endtime` (`double`): End time for rendering.
 
-**Parameters for `RenderTransformed`:**
-- `starttime` (`double`): The start time for the transformed rendering.
-- `endtime` (`double`): The end time for the transformed rendering.
-- `reference` (`string`): A reference identifier for the specific transformation.
+### Movement Methods
+Methods for moving the receptor both absolutely and relatively within the storyboard.
 
----
+```csharp
+public void MoveReceptorAbsolute(double starttime, Vector2 endPos);
+public void MoveReceptorAbsolute(OsbEasing ease, double starttime, double endtime, Vector2 startPos, Vector2 endPos);
+public void MoveReceptorRelative(OsbEasing ease, double starttime, double endtime, Vector2 offset);
+public void MoveReceptorRelativeX(OsbEasing ease, double starttime, double endtime, float value);
+public void MoveReceptorRelativeY(OsbEasing ease, double starttime, double endtime, float value);
+```
+
+**Parameters:**
+- `starttime`, `endtime` (`double`): Start and end times for the movement.
+- `ease` (`OsbEasing`): Easing function for the transition.
+- `startPos`, `endPos`, `offset` (`Vector2`): Starting, ending, and offset positions for the movement.
+- `value` (`float`): Value for relative movement in X or Y direction.
+
+### Scale and Rotate
+Adjusts the scale and rotation of the receptor to enhance visual effects, especially during gameplay interactions.
+
+```csharp
+public void ScaleReceptor(OsbEasing ease, double starttime, double endtime, Vector2 newScale);
+public void RotateReceptorAbsolute(OsbEasing ease, double starttime, double endtime, double rotation);
+public void RotateReceptor(OsbEasing ease, double starttime, double endtime, double rotation);
+public void PivotReceptor(OsbEasing ease, double starttime, double endtime, double rotation, Vector2 center);
+```
+
+**Parameters:**
+- `ease` (`OsbEasing`): Easing function for scaling or rotation transitions.
+- `starttime`, `endtime` (`double
+
+`): Start and end times for the scaling or rotation effect.
+- `newScale` (`Vector2`): New scale vector.
+- `rotation` (`double`): Rotation angle in radians.
+- `center` (`Vector2`): Center point for rotation.
 
 ### Utility Methods
-Include additional methods for handling specific properties like position, scale, and rotation at different times.
+Provides real-time information about the position and scale of the receptor, useful for dynamic interactions and animations.
 
 ```csharp
 public Vector2 PositionAt(double time);
-public float RotationAt(double currentTIme);
-public Vector2 ScaleAt(double currentTime);
+public Vector2 ScaleAt(double time);
+public float RotationAt(double time);
 ```
 
-**Utility Method Descriptions:**
-- `PositionAt`: Retrieves the receptor's position at a specified time.
-- `RotationAt`: Retrieves the receptor's rotation at a given time.
-- `ScaleAt`: Retrieves the receptor's scale at a certain time.
+**Parameters:**
+- `time` (`double`): The specific time to retrieve the property.
 
-These utility methods provide essential functionalities for dynamically managing the receptor's position, rotation, and scale, aligning them with the rhythm and flow of the game.
+**Returns:**
+- Position, scale, or rotation at the specified time.

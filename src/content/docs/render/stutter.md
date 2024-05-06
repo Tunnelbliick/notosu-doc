@@ -3,6 +3,8 @@ title: Stutter
 description: Renders notes with a stuttering movement from their origin to the receptor
 ---
 
+# DEPRECATED!
+
 The `Stutter` renderer introduces a unique and dynamic way to visualize notes in game. It is characterized by its stuttering movement, where notes move in a jerky fashion from their origin to the receptor. This style creates an engaging visual effect that adds to the rhythmic complexity of the game.
 
 ### Functionality of the Renderer:

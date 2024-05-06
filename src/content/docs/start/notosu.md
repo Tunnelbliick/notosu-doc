@@ -33,40 +33,59 @@ Setting up a playfield and notes in notOSU! involves three key components: layer
 Below is an example script to guide you through configuring a playfield in notOSU!:
 
 ```csharp
-var receptors = GetLayer("r");
-var notes = GetLayer("n");
+// Generate function in a storybrew script
+public override void Generate() {
 
-// Define general values
-var starttime = 0;
-var endtime = 24000;
-var duration = endtime - starttime;
+    var receptors = GetLayer("r");
+    var notes = GetLayer("n");
 
-// Playfield dimensions
-var width = 200f;
-var height = 500;
+    // General values
+    var starttime = 0; // the starttime where the playfield is initialized
+    var endtime = 257044; // the endtime where the playfield is nolonger beeing rendered
+    var duration = endtime - starttime; // the length the playfield is kept alive
 
-// Note initialization parameters
-var bpm = 190f;
-var offset = 0f;
+    // Playfield Scale
+    var width = 250f; // widht of the playfield / invert to flip
+    var height = 600f; // height of the playfield / invert to flip -600 = downscroll | 600 = upscropll
+    var receptorWallOffset = 50f; // how big the boundary box for the receptor is 50 means it will be pushed away 50 units from the wall
 
-// DrawInstance configuration
-var updatesPerSecond = 50;
-var scrollSpeed = 800f;
-var rotateNotesToFaceReceptor = false;
-var fadeTime = 60;
+    // Note initilization Values
+    var sliderAccuracy = 30; // The Segment length for sliderbodies since they are rendered in slices 30 is default
+    var isColored = false; // This property is used if you want to color the notes by urself for effects. It does not swap if the snap coloring is used.
 
-var receptorBitmap = GetMapsetBitmap("sb/sprites/receiver.png"); // Receptor sprite
-var receptorWidth = receptorBitmap.Width;
+    // Drawinstance Values
+    var updatesPerSecond = 50; // The amount of steps the rendring engine does to render out note and receptor positions
+    var scrollSpeed = 900f; // The speed at which the Notes scroll
+    var fadeTime = 150; // The time notes will fade in
 
-Playfield field = new Playfield();
-field.InitializePlayField(receptors, notes, starttime, endtime, width, height, 50);
-field.InitializeNotes(Beatmap.HitObjects.ToList(), bpm, offset, false, sliderAccuracy);
+    Playfield field = new Playfield();
+    field.initilizePlayField(receptors, notes, starttime, endtime, width, height, receptorWallOffset, Beatmap.OverallDifficulty);
+    field.initializeNotes(Beatmap.HitObjects.ToList(), Beatmap.GetTimingPointAt(starttime).Bpm, Beatmap.GetTimingPointAt(starttime).Offset, isColored, sliderAccuracy);
 
-DrawInstance draw = new DrawInstance(field, starttime, scrollSpeed, updatesPerSecond, OsbEasing.None, rotateNotesToFaceReceptor, fadeTime, fadeTime);
+    DrawInstance draw = new DrawInstance(field, starttime, scrollSpeed, updatesPerSecond, OsbEasing.None, true, fadeTime, fadeTime);
+    draw.drawViaEquation(duration, NoteFunction, true);
+}
 
-// Apply effects before calling draw function
-// Note: Any changes after draw function call will not be rendered
-draw.DrawNotesByOriginToReceptor(duration);
+// NoteFunction is used to manipulate the pathway and a bunch of other things the note should do on their way to the receptor
+// Please be warry that this is beeing run async so you need to keep thread safety in mind when working on complex Functions.
+// You can use the progress to determin how far the note is in its cycle 0 = just start | 1 = ontop of receptor / finished
+// Special flags for hold bodies exist
+public Vector2 NoteFunction(EquationParameters p)
+{
+    return p.position;
+}
 ```
+
+### Hitlighting
+
+Notosu! now includes hitlighting via storybpoard triggers. For this you need to set the **Sample Set** and **Additions** per column, **left to right**!
+
+Starting left.
+col1 = Sampleset Normal | Additons Normal
+col2 = Sampleset Normal | Additons Soft
+col3 = Sampleset Soft | Additions Normal
+col4 = Sampleset Soft | Additions Soft
+
+This should automatically make hitlighting work.
 
 By following these steps, you can effectively set up your notOSU! Playfield and Notes, ready for creating engaging storyboards for osu!mania.

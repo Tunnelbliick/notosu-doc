@@ -3,6 +3,8 @@ title: PathWay
 description: Renders a pathway the notes follow
 ---
 
+# DEPRECATED! / will be moved
+
 The `PathWay` static class designed for drawing paths for notes using storyboard sprites. It's important to note that this method is considered defunct and not recommended for use, as it will likely be replaced by a more efficient method in the context of the `ByEquation` renderer.
 
 ### Functionality of the `PathWay` Renderer:

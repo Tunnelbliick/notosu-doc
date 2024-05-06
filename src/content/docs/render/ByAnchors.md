@@ -3,6 +3,8 @@ title: ByAnchors
 description: Renders notes via a set of defined anchor points
 ---
 
+# DEPRECATED!
+
 The `ByAnchors` renderer calculates and renders the movement of notes based on a set of defined anchor points. This approach provides a more dynamic and visually appealing representation of notes, especially in complex sequences. 
 
 ### Explanation of What the Renderer Does:
