@@ -3,6 +3,8 @@ title: Column
 description: Properties, Methods, and Functions for Columns in a Rhythm Game Playfield
 ---
 
+![Column](../../../../assets/images/Playfield/column.jpg)
+
 The `Column` class in a rhythm game playfield represents individual columns which handle their respective receptors, notes, and animations. It provides functionalities for moving, scaling, rotating these elements, and syncing them with the game's rhythm.
 
 ## Properties

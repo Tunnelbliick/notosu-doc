@@ -40,7 +40,7 @@ Here's what each folder is for:
 
 - `sb/`: This is your main storyboard directory. All storyboard-related assets go here.
 - `sprites/`: This subfolder contains all the visual elements you'll use in your storyboard, like hit objects and receptors.
-- `white.png`: This is just a 1x1 white pixel thaat is used for visualisations etc.
+- `white.png`: This is just a 1x1 white pixel that is used for visualisations etc.
 
 ## Setting Up Your Storyboard Folder
 
