@@ -3,6 +3,8 @@ title: NoteOrigin
 description: Properties, Methods, and Functions for Note Origin Objects in a Playfield
 ---
 
+![NoteOrigin](../../../../assets/gifs/Playfield/NoteOrigin.gif)
+
 The `NoteOrigin` class manages the origin point for notes within a storyboard. It controls the positioning, scaling, and rotation of these origins, supporting animations and transitions that sync with gameplay.
 
 ## Properties

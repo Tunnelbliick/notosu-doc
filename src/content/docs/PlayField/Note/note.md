@@ -3,6 +3,8 @@ title: Note
 description: Properties, Methods, and Functions for Note Objects in a Rhythm Game Playfield
 ---
 
+![Note](../../../../assets/images/Playfield/note.jpg)
+
 The `Note` class in a playfield is crucial for managing the individual notes that players interact with. It controls the display, movement, and animations of notes, providing various functionalities to synchronize them with the musics rhythm.
 
 ## Properties

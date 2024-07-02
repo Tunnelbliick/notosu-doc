@@ -3,6 +3,8 @@ title: Receptor
 description: Properties, Methods, and Functions for Receptor Objects in a Rhythm Game Playfield
 ---
 
+![Receptor](../../../../assets/images/Playfield/receptor.jpg)
+
 The `Receptor` class represents the visual receptor element in a storyboard for osu!mania, which interacts with notes during gameplay. It manages the receptor's animation, positioning, and effects based on user interactions and game mechanics.
 
 

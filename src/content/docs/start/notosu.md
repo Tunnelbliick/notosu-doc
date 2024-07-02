@@ -25,8 +25,21 @@ Setting up a playfield and notes in notOSU! involves three key components: layer
 ### Required Components:
 
 1. **Layers**: Create separate layers for receptors and notes within your storyboard.
+```csharp
+    var receptors = GetLayer("r");
+    var notes = GetLayer("n");
+```
 2. **Playfield Instance**: Establish a playfield instance to manage the gameplay area and note mechanics.
+```csharp
+    Playfield field = new Playfield();
+    field.initilizePlayField(receptors, notes, starttime, endtime, width, height, receptorWallOffset, Beatmap.OverallDifficulty);
+    field.initializeNotes(Beatmap.HitObjects.ToList(), Beatmap.GetTimingPointAt(starttime).Bpm, Beatmap.GetTimingPointAt(starttime).Offset, isColored, sliderAccuracy);
+```
 3. **DrawInstance**: Utilize a DrawInstance to control how notes are drawn and animated on the playfield.
+```csharp
+    DrawInstance draw = new DrawInstance(field, starttime, scrollSpeed, updatesPerSecond, OsbEasing.None, true, fadeTime, fadeTime);
+    draw.drawViaEquation(duration, NoteFunction, true);
+```
 
 ### Example Setup:
 
@@ -76,16 +89,32 @@ public Vector2 NoteFunction(EquationParameters p)
 }
 ```
 
+When the code above is executed on the storybrew, it will look like this:
+![Introduction](../../../assets/gifs/Start/introduction.gif)
+
 ### Hitlighting
 
 Notosu! now includes hitlighting via storybpoard triggers. For this you need to set the **Sample Set** and **Additions** per column, **left to right**!
+![Sample Set and Additions](../../../assets/images/Start/SampleSetAdditions.jpg)
 
 Starting left.
-col1 = Sampleset Normal | Additons Normal
-col2 = Sampleset Normal | Additons Soft
-col3 = Sampleset Soft | Additions Normal
-col4 = Sampleset Soft | Additions Soft
+- Column 1 (Left Arrow) = Sampleset Normal **|** Additons Normal
+- Column 2 (Down Arrow) = Sampleset Normal **|** Additons Soft
+- Column 3 (Up Arrow) = Sampleset Soft **|** Additions Normal
+- Column 4 (Right Arrow) = Sampleset Soft **|** Additions Soft
+
+:::tip
+To be able to easily set the notes to their respective sampleset and additions. 
+You can try to:
+1. Decrease the timeline zoom up to the maximum
+2. Click and drag the cursor on one column on the playfield until you reach the end of song.
+3. Set the Sampleset and additions based on the rules above.
+![Sampleset Additions Tip](../../../assets/gifs/Start/SetTip.gif)
+:::
+
 
 This should automatically make hitlighting work.
+
+![Sampleset Additions Preview](../../../assets/gifs/Start/HitlightingPreview.gif)
 
 By following these steps, you can effectively set up your notOSU! Playfield and Notes, ready for creating engaging storyboards for osu!mania.
